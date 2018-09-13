@@ -63,6 +63,7 @@ module Travis
           end
 
           def exclusive(&block)
+            return p data unless data[:owner_type] && data[:owner_id]
             super(['scheduler.owners', owners.key].join('-'), config.to_h, retries: 0, &block)
           end
 
